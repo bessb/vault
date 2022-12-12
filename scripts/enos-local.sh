@@ -37,7 +37,7 @@ function version_base() {
     return
   fi
 
-  : "${VERSION_FILE:=$(repo_root)/sdk/version/version_base.go}"
+  : "${VERSION_FILE:=$(repo_root)/version/version_base.go}"
   awk '$1 == "Version" && $2 == "=" { gsub(/"/, "", $3); print $3 }' < "$VERSION_FILE"
 }
 
@@ -50,7 +50,7 @@ function version_pre() {
     return
   fi
 
-  : "${VERSION_FILE:=$(repo_root)/sdk/version/version_base.go}"
+  : "${VERSION_FILE:=$(repo_root)/version/version_base.go}"
   awk '$1 == "VersionPrerelease" && $2 == "=" { gsub(/"/, "", $3); print $3 }' < "$VERSION_FILE"
 }
 
@@ -63,7 +63,7 @@ function version_metadata() {
     return
   fi
 
-  : "${VERSION_FILE:=$(repo_root)/sdk/version/version_base.go}"
+  : "${VERSION_FILE:=$(repo_root)/version/version_base.go}"
   awk '$1 == "VersionMetadata" && $2 == "=" { gsub(/"/, "", $3); print $3 }' < "$VERSION_FILE"
 }
 
