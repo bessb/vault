@@ -74,21 +74,21 @@ function build() {
   fi
 
   # if building locally with enos - don't need to set version/prerelease/metadata as the default from version_base.go will be used
-  ldflags="${ldflags} -X github.com/hashicorp/vault/sdk/version.GitCommit=$revision -X github.com/hashicorp/vault/sdk/version.BuildDate=$build_date"
+  ldflags="${ldflags} -X github.com/hashicorp/vault/version.GitCommit=$revision -X github.com/hashicorp/vault/version.BuildDate=$build_date"
 
   if [[ ${BASE_VERSION+x} ]]; then
     msg="${msg}, base version ${BASE_VERSION}"
-    ldflags="${ldflags} -X github.com/hashicorp/vault/sdk/version.Version=$BASE_VERSION"
+    ldflags="${ldflags} -X github.com/hashicorp/vault/version.Version=$BASE_VERSION"
   fi
 
   if [[ ${PRERELEASE_VERSION+x} ]]; then
     msg="${msg}, prerelease ${PRERELEASE_VERSION}"
-    ldflags="${ldflags} -X github.com/hashicorp/vault/sdk/version.VersionPrerelease=$PRERELEASE_VERSION"
+    ldflags="${ldflags} -X github.com/hashicorp/vault/version.VersionPrerelease=$PRERELEASE_VERSION"
   fi
 
   if [[ ${VERSION_METADATA+x} ]]; then
     msg="${msg}, metadata ${VERSION_METADATA}"
-    ldflags="${ldflags} -X github.com/hashicorp/vault/sdk/version.VersionMetadata=$VERSION_METADATA"
+    ldflags="${ldflags} -X github.com/hashicorp/vault/version.VersionMetadata=$VERSION_METADATA"
   fi
 
   # Build vault
