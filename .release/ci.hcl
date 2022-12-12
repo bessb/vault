@@ -32,10 +32,10 @@ event "build" {
 
 event "prepare" {
   depends = ["build"]
-  action "upload-dev" {
+  action "prepare" {
     organization = "hashicorp"
     repository = "crt-workflows-common"
-    workflow = "upload-dev"
+    workflow = "prepare"
     depends = ["build"]
   }
 
@@ -45,7 +45,7 @@ event "prepare" {
 }
 
 event "enos-verify-stable" {
-  depends = ["verify"]
+  depends = ["prepare"]
   action "enos-verify-stable" {
     organization = "hashicorp"
     repository = "vault"
