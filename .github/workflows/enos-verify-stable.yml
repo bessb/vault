@@ -17,3 +17,10 @@ jobs:
       artifact-revision: ${{ github.event.client_payload.payload.sha }}
       artifact-version: ${{ github.event.client_payload.payload.version }}
     secrets: inherit
+
+  save-metadata:
+    runs-on: linux
+    needs: enos-verify-stable
+    steps:
+      - name: Persist metadata
+        uses: hashicorp/actions-persist-metadata@v1
